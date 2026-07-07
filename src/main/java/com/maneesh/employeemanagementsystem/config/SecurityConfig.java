@@ -13,14 +13,12 @@ public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    public SecurityConfig(
-            JwtAuthenticationFilter jwtAuthenticationFilter) {
+    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(
-            HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
                 .cors(Customizer.withDefaults())
@@ -38,40 +36,12 @@ public class SecurityConfig {
                                 "/v3/api-docs/**"
                         ).permitAll()
 
-                        .requestMatchers("/users/username/**")
-                        .hasAnyRole(
-                                "ADMIN",
-                                "MANAGER",
-                                "EMPLOYEE"
-                        )
-
-                        .requestMatchers("/users/**")
-                        .hasRole("ADMIN")
-
-                        .requestMatchers("/roles/**")
-                        .hasRole("ADMIN")
-
-                        .requestMatchers("/departments/**")
-                        .hasRole("ADMIN")
-
-                        .requestMatchers("/projects/**")
-                        .hasAnyRole(
-                                "ADMIN",
-                                "MANAGER"
-                        )
-
-                        .requestMatchers("/employees/**")
-                        .hasAnyRole(
-                                "ADMIN",
-                                "MANAGER"
-                        )
-
-                        .requestMatchers("/leave-requests/**")
-                        .hasAnyRole(
-                                "ADMIN",
-                                "MANAGER",
-                                "EMPLOYEE"
-                        )
+                        .requestMatchers("/users/**").permitAll()
+                        .requestMatchers("/roles/**").permitAll()
+                        .requestMatchers("/departments/**").permitAll()
+                        .requestMatchers("/projects/**").permitAll()
+                        .requestMatchers("/employees/**").permitAll()
+                        .requestMatchers("/leave-requests/**").permitAll()
 
                         .anyRequest().authenticated()
                 )
