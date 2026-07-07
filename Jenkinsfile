@@ -20,5 +20,11 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                bat 'copy target\\employeemanagementsystem-0.0.1-SNAPSHOT.jar C:\\deploy\\ /Y'
+            }
+        }
     }
 }
