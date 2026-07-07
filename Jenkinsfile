@@ -25,7 +25,7 @@ pipeline {
             steps {
                 bat '''
                 copy target\\employeemanagementsystem-0.0.1-SNAPSHOT.jar C:\\deploy\\ /Y
-                start "" java -jar C:\\deploy\\employeemanagementsystem-0.0.1-SNAPSHOT.jar
+                start "" C:\\deploy\\start-app.bat
                 '''
             }
         }
