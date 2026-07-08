@@ -17,4 +17,4 @@ public class Role {
 
     @NotBlank(message = "Role Name is required")
     private String roleName;
-}
+} 
