@@ -100,7 +100,7 @@ function Login() {
           </button>
 
           <p className="text-center text-slate-400 text-sm mt-6">
-            Employee Management System © 2026
+            Employee Management System 2 © 2026
           </p>
         </div>
       </div>

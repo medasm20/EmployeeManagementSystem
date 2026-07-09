@@ -121,7 +121,7 @@ function AdminDashboard() {
       {/* Navbar */}
       <div className="bg-white dark:bg-slate-900 border-b dark:border-slate-800 px-6 py-4 flex justify-between items-center shadow-sm">
         <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
-          Employee Management System
+          Employee Management System 2
         </h1>
 
         <div className="flex items-center gap-3">

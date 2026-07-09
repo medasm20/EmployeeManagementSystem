@@ -20,7 +20,7 @@ function EmployeeDashboard() {
     <div className="min-h-screen bg-[#020617]">
       <div className="bg-white border-b px-6 py-4 flex justify-between items-center shadow-sm">
         <h1 className="text-2xl font-bold text-slate-800">
-          Employee Management System
+          Employee Management System 2
         </h1>
 
         <button

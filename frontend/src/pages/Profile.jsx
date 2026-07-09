@@ -77,7 +77,7 @@ function Profile() {
             </h2>
 
             <p className="text-gray-500 mt-1">
-              Employee Management System User
+              Employee Management System 2 User
             </p>
           </div>
 
