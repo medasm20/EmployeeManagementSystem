@@ -20,7 +20,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = Constants.firstName)
+    @NotBlank(message = Constants.FIRST_NAME)
     private String firstName;
 
     @NotBlank
