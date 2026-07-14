@@ -6,6 +6,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
+import java.time.Instant;
 import java.util.Date;
 
 @Component
@@ -20,13 +21,16 @@ public class JwtUtil {
     public String generateToken(String username,
                                 String role) {
 
+        Instant now = Instant.now();
+
         return Jwts.builder()
                 .subject(username)
                 .claim("role", role)
-                .issuedAt(new Date())
+                .issuedAt(Date.from(now))
                 .expiration(
-                        new Date(System.currentTimeMillis()
-                                + 1000 * 60 * 60)
+                        Date.from(
+                                now.plusSeconds(60 * 60)
+                        )
                 )
                 .signWith(key)
                 .compact();
