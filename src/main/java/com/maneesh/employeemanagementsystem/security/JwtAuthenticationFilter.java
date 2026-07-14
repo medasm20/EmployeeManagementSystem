@@ -4,6 +4,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +18,9 @@ import java.util.List;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
+    private static final Logger logger =
+            LoggerFactory.getLogger(JwtAuthenticationFilter.class);
 
     private final JwtUtil jwtUtil;
 
@@ -67,18 +72,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext()
                     .setAuthentication(authentication);
 
-            System.out.println(
-                    "Authenticated User: "
-                            + username
-                            + " Role: "
-                            + role);
+            logger.info(
+                    "Authenticated User: {} Role: {}",
+                    username,
+                    role
+            );
 
             Authentication currentAuth =
                     SecurityContextHolder.getContext()
                             .getAuthentication();
 
             if (currentAuth != null) {
-                System.out.println(
+                logger.info(
+                        "Authorities: {}",
                         currentAuth.getAuthorities()
                 );
             }
