@@ -9,6 +9,14 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    bat 'mvn clean verify sonar:sonar -Dsonar.projectKey=employee-management-system'
+                }
+            }
+        }
+
         stage('Build') {
             steps {
                 bat '.\\mvnw.cmd clean package'
@@ -30,4 +38,4 @@ pipeline {
             }
         }
     }
-} 
+}
