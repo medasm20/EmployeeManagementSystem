@@ -29,7 +29,7 @@ public class JwtUtil {
                 .issuedAt(Date.from(now))
                 .expiration(
                         Date.from(
-                                now.plusSeconds(60 * 60)
+                                now.plusSeconds(3600L)
                         )
                 )
                 .signWith(key)
