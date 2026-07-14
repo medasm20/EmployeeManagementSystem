@@ -3,6 +3,7 @@ package com.maneesh.employeemanagementsystem.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -12,11 +13,16 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET_KEY =
-            "mysecretkeymysecretkeymysecretkeymysecretkey";
+    private final SecretKey key;
 
-    private final SecretKey key =
-            Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    public JwtUtil(
+            @Value("${jwt.secret}") String secretKey) {
+
+        this.key =
+                Keys.hmacShaKeyFor(
+                        secretKey.getBytes()
+                );
+    }
 
     public String generateToken(String username,
                                 String role) {
