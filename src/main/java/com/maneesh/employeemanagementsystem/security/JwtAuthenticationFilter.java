@@ -19,7 +19,7 @@ import java.util.List;
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private static final Logger logger =
+    private static final Logger appLogger =
             LoggerFactory.getLogger(JwtAuthenticationFilter.class);
 
     private final JwtUtil jwtUtil;
@@ -72,7 +72,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext()
                     .setAuthentication(authentication);
 
-            logger.info(
+            appLogger.info(
                     "Authenticated User: {} Role: {}",
                     username,
                     role
@@ -83,7 +83,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                             .getAuthentication();
 
             if (currentAuth != null) {
-                logger.info(
+                appLogger.info(
                         "Authorities: {}",
                         currentAuth.getAuthorities()
                 );
