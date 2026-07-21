@@ -135,6 +135,18 @@ class UserServiceImplTest {
     }
 
     @Test
+    void shouldReturnNullWhenUsernameNotFound() {
+
+        when(userRepository.findByUsername("unknownuser"))
+                .thenReturn(Optional.empty());
+
+        User result =
+                userService.getUserByUsername("unknownuser");
+
+        assertNull(result);
+    }
+
+    @Test
     void shouldDeleteUser() {
 
         userService.deleteUser(1L);
