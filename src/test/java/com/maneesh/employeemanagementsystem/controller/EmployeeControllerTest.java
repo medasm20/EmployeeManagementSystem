@@ -1,5 +1,6 @@
 package com.maneesh.employeemanagementsystem.controller;
 
+import com.maneesh.employeemanagementsystem.model.Employee;
 import com.maneesh.employeemanagementsystem.service.EmployeeService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,17 +21,20 @@ class EmployeeControllerTest {
     private EmployeeController employeeController;
 
     @Test
-    void shouldDeleteEmployeeAndReturnSuccessMessage() {
+    void shouldReturnEmployeeById() {
 
-        String result =
-                employeeController.deleteEmployee(1L);
+        Employee employee = new Employee();
+        employee.setId(1L);
 
-        verify(employeeService, times(1))
-                .deleteEmployee(1L);
+        when(employeeService.getEmployeeById(1L))
+                .thenReturn(employee);
+
+        Employee result =
+                employeeController.getEmployeeById(1L);
 
         assertEquals(
-                "Employee deleted successfully",
-                result
+                1L,
+                result.getId()
         );
     }
 }
