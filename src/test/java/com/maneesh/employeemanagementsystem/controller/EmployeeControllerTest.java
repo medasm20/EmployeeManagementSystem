@@ -1,6 +1,5 @@
 package com.maneesh.employeemanagementsystem.controller;
 
-import com.maneesh.employeemanagementsystem.model.Employee;
 import com.maneesh.employeemanagementsystem.service.EmployeeService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
