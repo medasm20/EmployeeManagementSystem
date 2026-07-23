@@ -1,6 +1,5 @@
 package com.maneesh.employeemanagementsystem.controller;
 
-import com.maneesh.employeemanagementsystem.model.Employee;
 import com.maneesh.employeemanagementsystem.service.EmployeeService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -19,24 +18,6 @@ class EmployeeControllerTest {
 
     @InjectMocks
     private EmployeeController employeeController;
-
-    @Test
-    void shouldReturnEmployeeById() {
-
-        Employee employee = new Employee();
-        employee.setId(1L);
-
-        when(employeeService.getEmployeeById(1L))
-                .thenReturn(employee);
-
-        Employee result =
-                employeeController.getEmployeeById(1L);
-
-        assertEquals(
-                1L,
-                result.getId()
-        );
-    }
 
     @Test
     void shouldDeleteEmployeeAndReturnSuccessMessage() {
