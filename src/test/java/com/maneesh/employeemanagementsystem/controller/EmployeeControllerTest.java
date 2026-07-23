@@ -37,4 +37,19 @@ class EmployeeControllerTest {
                 result.getId()
         );
     }
+
+    @Test
+    void shouldDeleteEmployeeAndReturnSuccessMessage() {
+
+        String result =
+                employeeController.deleteEmployee(1L);
+
+        verify(employeeService, times(1))
+                .deleteEmployee(1L);
+
+        assertEquals(
+                "Employee deleted successfully",
+                result
+        );
+    }
 }
